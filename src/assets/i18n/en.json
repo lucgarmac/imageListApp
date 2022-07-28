@@ -1,0 +1,18 @@
+{
+    "LANGUAGE": {
+        "ES": "Spanish",
+        "EN": "English"
+    },
+    "MENU": {
+        "IMAGE": "Images"
+    },
+    "IMAGE": {
+        "TITLE": "Image list",
+        "FILTER": "Filter by ID or text image",
+        "TABLE": {
+            "TOTAL_ITEMS": "{{totalItems}} items",
+            "PHOTO": "Photo",
+            "TEXT": "Text"
+        }
+    }
+}

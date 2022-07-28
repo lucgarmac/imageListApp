@@ -1,0 +1,48 @@
+<div class="total-items">
+  <span>{{ 'IMAGE.TABLE.TOTAL_ITEMS' | translate:{totalItems:totalRows} }}</span>
+</div>
+<div class="table-wrapper"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    [scrollWindow]="false"
+    (scrolled)="onScroll()">
+  <table 
+    class="custom-table"
+    cdk-table
+    cdkScrollable 
+    [dataSource]="visibleRows" 
+    [trackBy]="trackBy"
+    > 
+    <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.field">
+        <th cdk-header-cell *cdkHeaderCellDef class="custom-table__header sticky-header"> 
+            {{column.label | translate}}
+        </th>
+
+        <td cdk-cell *cdkCellDef="let row" class="custom-table__cell"> 
+          
+          <ng-container *ngIf="column.type === 'data'">
+            <div class="custom-table__cell__container">
+              {{row[column.field]}}
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="column.type === 'image'">
+            <div class="custom-table__cell__container">
+              <img [src]="row[column.field]">
+            </div>
+          </ng-container>
+        </td>
+    </ng-container>
+  
+    <thead>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+    </thead>
+
+    <tbody>
+      <tr class="custom-table__row" cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    </tbody>
+    
+    
+  </table>
+</div>

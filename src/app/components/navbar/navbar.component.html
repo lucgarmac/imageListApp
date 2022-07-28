@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <span class="navbar-brand" >
+            <img src="https://www.mnemo.com/wp-content/uploads/2019/11/mnemo-logo.png"  width="90" height="24">
+        </span>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a *ngFor="let menuItem of menu" 
+                [routerLink]="[menuItem.url]" 
+                routerLinkActive="active"
+                class="nav-link">{{menuItem.label | translate}}</a>
+            </div>
+        </div>
+
+        <div class="language">
+            <select class="form-select" [(ngModel)]="optionSelected" (ngModelChange)="onChangeLanguage($event)">
+                <option [value]="opt.id"  *ngFor="let opt of options">{{opt.label | translate}}</option>
+            </select>
+        </div>
+    </div>
+</nav>
